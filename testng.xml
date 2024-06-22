@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="/Users/legoman/code/TestNgProject">
+        <classes>
+            <class name="ie.williamswalsh.FirstTestCase">
+                <methods>
+                    <include name="setup"/>
+                    <include name="login"/>
+                    <include name="teardown"/>
+                </methods>
+            </class>
+            <class name="ie.williamswalsh.SecondTestCase">
+                <methods>
+                    <include name="setup"/>
+                    <include name="addCustomer"/>
+                    <include name="teardown"/>
+                </methods>
+<!--                If you include the methods element it will only include the included tests
+                <methods>
+                    <include name="setup"/>
+                    <include name="login"/>
+                    <include name="teardown"/>
+                </methods>
+-->
+            </class>
+        </classes>
+    </test>
+</suite>
