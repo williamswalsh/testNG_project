@@ -37,7 +37,7 @@ For example:
 1) testFour output
 2) testOne output
 3) testThree output
-4) testTwo output
+4) testTwo output  
 F -> O -> Th -> Tw
 
 This can be changed by adding priority to the test annotation:  
