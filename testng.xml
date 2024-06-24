@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
-    <test verbose="2" preserve-order="true"
-          name="/Users/legoman/code/TestNgProject/src/test/java/ie/williamswalsh/GroupingExample.java">
-        <groups>
-            <run>
-                <include name="sanity" />
-<!--                <exclude name="regression" />-->
-<!--                <include name="regression" />-->
-            </run>
-        </groups>
+<suite name="Parameters test Suite">
 
+    <test name="ParametersExamplesChrome">
+        <parameter name="testng_browser" value="CHROME" />
+        <parameter name="url" value="https://opensource-demo.orangehrmlive.com/" />
         <classes>
-            <class name="ie.williamswalsh.GroupingExample" />
+            <class name="ie.williamswalsh.ParametersExamples" />
+        </classes>
+    </test>
+
+
+    <test name="ParametersExamplesFirefox">
+        <parameter name="testng_browser" value="FIREFOX" />
+        <parameter name="url" value="https://opensource-demo.orangehrmlive.com/" />
+        <classes>
+            <class name="ie.williamswalsh.ParametersExamples" />
         </classes>
     </test>
 </suite>
