@@ -8,6 +8,9 @@ It is a record of the test cases in a test suite.
 You can run the config file in Intellij which triggers the build of the listed tests.  
 Can create the file using the Create testNG Plugin.  
 ```bash
+# Execution of TestNG test - no other dependencies
+java org.testng.TestNG testng1.xml
+
 # Execution of the testng.xml file by IDEA:
 /Users/legoman/.sdkman/candidates/java/17.0.6-amzn/bin/java \
 -ea \
@@ -97,4 +100,61 @@ Assigning test to the groups called: sanity & regression.
 ```
 
 
-### Assertions
+### Parallel Testing
+To run tests in parallel you can set this in the testng.xml.  
+Set the parallel & thread-count attributes in the suite element:  
+```xml
+<suite name="All Test Suite" parallel="methods" thread-count="4"></suite>
+```
+The parallel attribute can be set to:
+- tests - will run all the methods in the same <test> tag in the same thread
+- classes - will run all the methods in the same class in the same thread
+- methods - will run all your test methods in separate threads
+- instances - will run all the methods in the same instance in the same thread
+- none
+
+### Listeners
+
+You can create a listener by implementing the ITestListener interface:
+```java
+public class CustomListener implements ITestListener {
+    public void onTestFailure(ITestResult result) {
+        System.out.println("onTestFailure - result.name():" + result.getName());
+    }
+}
+```
+You can associate a listener to a test by using the annotation with **class reference**:
+```java
+@Listeners(ie.williamswalsh.listeners.CustomListener.class)
+public class ListenerTest {...}
+
+// Multiple listeners:
+@Listeners({ com.example.MyListener.class, com.example.MyMethodInterceptor.class })
+public class MyTest {}
+```
+**or** by adding an association in the testng.xml:
+```xml
+<listeners>
+    <listener class-name="ie.williamswalsh.listeners.CustomListener"/>
+</listeners>
+```
+
+### Log output from multiple listener methods:
+```
+onStart - Start test execution
+onTestStart - result.name():test1
+onTestSuccess - result.name():test1
+onTestStart - result.name():test2
+onTestFailure - result.name():test2
+
+java.lang.AssertionError:
+Expected :B
+Actual   :A
+
+onTestStart - result.name():test3
+onTestSkipped - result.name():test3
+
+Test ignored.
+onFinish - Finish test execution
+```
+

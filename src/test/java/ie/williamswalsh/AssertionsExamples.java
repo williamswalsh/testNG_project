@@ -15,11 +15,11 @@ import java.time.Duration;
 
 public class AssertionsExamples {
 
-    WebDriver driver;
+    private static WebDriver driver;
     private static WebDriverWait wait;;
 
     @BeforeClass
-    void setup() {
+    static void setup() {
         System.setProperty("webdriver.chrome.driver", "/Users/legoman/code/selenium/drivers/chromedriver-mac-arm64/chromedriver");
         driver = new ChromeDriver();
         driver.get("https://opensource-demo.orangehrmlive.com/");

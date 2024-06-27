@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="tests" thread-count="2">
+    <test verbose="2" preserve-order="true"
+          name="/Users/legoman/code/TestNgProject/src/test/java/ie/williamswalsh/parallel_testing/ParallelTest1.java">
+        <classes>
+            <class name="ie.williamswalsh.parallel_testing.ParallelTest1" />
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="/Users/legoman/code/TestNgProject/src/test/java/ie/williamswalsh/parallel_testing/ParallelTest2.java">
+        <classes>
+            <class name="ie.williamswalsh.parallel_testing.ParallelTest2" />
+        </classes>
+    </test>
+</suite>
